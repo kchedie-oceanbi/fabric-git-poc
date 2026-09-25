@@ -1,6 +1,6 @@
 # fabric-git-poc
 
-Testrepository voor Git-integratie en CI/CD met Microsoft Fabric en Power BI.
+Testrepository voor Git-integratie en CI/CD met Microsoft Fabric en Power 
 
 ## Branchstrategie
 
