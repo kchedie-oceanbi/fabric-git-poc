@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b6db3baa68930b995e5c",
+  "position": {
+    "x": 10.299727520435969,
+    "y": 0,
+    "z": 0,
+    "height": 222.1798365122616,
+    "width": 460.54495912806544,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Table"
+                    }
+                  },
+                  "Property": "Omgeving"
+                }
+              },
+              "queryRef": "Table.Omgeving",
+              "nativeQueryRef": "Omgeving"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ea6cfdbfe060805aa171",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Table"
+              }
+            },
+            "Property": "Omgeving"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

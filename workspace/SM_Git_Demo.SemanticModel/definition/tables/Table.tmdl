@@ -1,0 +1,57 @@
+table Table
+	lineageTag: 052d8dd5-fcd8-45a0-97ec-f99e42f9c07d
+
+	measure 'Totale omzet' = SUM ('Table'[Omzet])
+		formatString: 0
+		lineageTag: e2f931ea-253f-4258-a29d-a78d12aea74a
+
+	measure Omgeving = "OMGEVING-DEV"
+		lineageTag: 1429f2e4-0356-4b27-8fa9-113c5b6cb5a9
+
+	column Datum
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 475e9346-7640-41f1-8815-014dd3437016
+		summarizeBy: none
+		sourceColumn: Datum
+
+		variation Variation
+			isDefault
+			relationship: 2c7a26e9-e9de-4b9c-b2fb-7f4187b20e38
+			defaultHierarchy: LocalDateTable_7e23f68c-1136-43d6-802f-850806058832.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Product
+		dataType: string
+		lineageTag: 8975536e-0f01-48c6-8f0c-b283b4e5b934
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Omzet
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a0b66ff-3489-4ac6-b928-f9cdca7b52f1
+		summarizeBy: sum
+		sourceColumn: Omzet
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Table = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMtS31DcyU9JRcstMLSkG0iamBkqxOtFKRjAJj9ScXCBlBhE2RldvagSRMIVJBOfklwApY1OwsAWaMeYQYUMDDHstIOYYGqEZZAIUjwUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Datum = _t, Product = _t, Omzet = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Omzet", type number}}),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Changed Type",{{"Datum", type date}, {"Product", type text}, {"Omzet", Int64.Type}})
+				in
+				  #"Changed column type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
