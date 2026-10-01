@@ -8,6 +8,15 @@ table Table
 	measure Omgeving = "OMGEVING-DEV"
 		lineageTag: 1429f2e4-0356-4b27-8fa9-113c5b6cb5a9
 
+	measure Totaal = SUM('Table'[Omzet])
+		formatString: 0
+		lineageTag: 8eb647a7-4aab-4100-8032-dee02a900380
+
+	measure Measure
+		lineageTag: 9beb85b9-f79b-4de0-a4f3-bcb378cffe09
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
 	column Datum
 		dataType: dateTime
 		formatString: Long Date
